@@ -1,20 +1,27 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# PhantomOS
 
-# Run and deploy your AI Studio app
+PhantomOS is a Continuous Capability Verification (CCV) platform that sits above existing AI agents and automation frameworks.
 
-This contains everything you need to run your app locally.
+Instead of creating more agents, PhantomOS focuses on verifying, governing, and continuously enforcing safe behavior through:
 
-View your app in AI Studio: https://ai.studio/apps/21191f1d-9ddc-4581-be02-4c90cfc392e4
+- Contract-First Agent Runner
+- Runtime Action Interception
+- Shadow Mode Verification
+- Circuit Breakers & Quarantine
+- Chronological Evidence Timelines
+- Explainability Engine
+- Agent Registry
+- Production Governance Laws
 
-## Run Locally
+PhantomOS follows six principles:
 
-**Prerequisites:**  Node.js
+- Trust > Intelligence
+- Verification > Optimism
+- Selection > Creation
+- Survival > Growth
+- Evidence > Assumptions
+- Discipline > Complexity
 
+The goal is simple:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Prevent silent failures and provide risk-bounded automation for production AI systems.**
