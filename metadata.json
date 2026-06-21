@@ -1,0 +1,6 @@
+{
+  "name": "PhantomOS",
+  "description": "Continuous Capability Verification Platform that evaluates, monitors, quarantines, and garbage collects redundant organizational capabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
