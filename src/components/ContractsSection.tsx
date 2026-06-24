@@ -1,209 +1,181 @@
 import React, { useState } from "react";
-import { BehavioralContract, Capability } from "../types.ts";
-import { ShieldCheck, Command, Code, AlertTriangle, Layers, ChevronRight } from "lucide-react";
+import { BehavioralContract } from "../types.ts";
+import { ShieldCheck, AlertTriangle, Layers, ChevronRight, Eye, EyeOff, BrainCircuit, Sparkles } from "lucide-react";
 
 interface ContractsSectionProps {
   contracts: BehavioralContract[];
-  capabilities: Capability[];
+  capabilities: any[]; 
 }
 
 export default function ContractsSection({
-  contracts,
-  capabilities
+  contracts
 }: ContractsSectionProps) {
   const [selectedContractId, setSelectedContractId] = useState<string | null>(null);
+  const [learningSuggestion, setLearningSuggestion] = useState<string | null>(null);
+  const [isLearning, setIsLearning] = useState(false);
 
   const selectedContract = contracts.find(c => c.id === selectedContractId) || contracts[0];
-  const linkedCapabilities = selectedContract 
-    ? capabilities.filter(cap => cap.contract_id === selectedContract.id)
-    : [];
+
+  const handleLearn = async () => {
+    if (!selectedContract) return;
+    setIsLearning(true);
+    setLearningSuggestion(null);
+    try {
+      const resp = await fetch(`/api/contracts/learn/${selectedContract.id}`);
+      if (resp.ok) {
+        const data = await resp.json();
+        setLearningSuggestion(data.suggestion);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLearning(false);
+    }
+  };
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-200 p-6 space-y-6" id="contracts-section">
-      <div>
-        <div className="flex items-center gap-2">
-          <ShieldCheck size={16} className="text-emerald-700" />
-          <h2 className="text-sm font-bold font-mono text-neutral-800 uppercase tracking-widest">
-            Mandatory Behavioral Contracts
-          </h2>
+    <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={16} className="text-indigo-400" />
+            <h2 className="text-sm font-bold font-mono text-white uppercase tracking-widest">
+              Firewall Policies
+            </h2>
+          </div>
+          <p className="text-[11px] text-neutral-500 font-sans">
+            Declarative behavioral boundaries. Every agent request is intercepted and verified against these contracts.
+          </p>
         </div>
-        <p className="text-xs text-gray-500 font-sans mt-1">
-          Zero trust compositions. Every capability library module is bounded by mandatory contracts asserting precise JSON schemas, precondition constraints, and fallback recovery steps.
-        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Navigation Index - Left Column */}
         <div className="lg:col-span-4 space-y-3 font-mono">
-          <span className="text-[10px] tracking-wider font-bold text-gray-400 block uppercase">
-            SLA Contract Schema Registry:
+          <span className="text-[10px] tracking-wider font-bold text-neutral-600 block uppercase">
+            Active Registry:
           </span>
 
           <div className="space-y-2">
-            {contracts.map(con => {
-              const isActive = selectedContractId === con.id || (!selectedContractId && con.id === contracts[0]?.id);
+            {(contracts || []).map(con => {
+              const isActive = (selectedContractId === con.id) || (!selectedContractId && con.id === contracts[0]?.id);
               return (
                 <button
                   key={con.id}
                   onClick={() => setSelectedContractId(con.id)}
-                  className={`w-full p-3 rounded-xl border text-left transition flex items-center justify-between text-xs font-sans ${
+                  className={`w-full p-4 rounded-2xl border text-left transition flex items-center justify-between text-xs font-sans ${
                     isActive 
-                      ? "border-neutral-900 bg-neutral-900 text-white" 
-                      : "border-gray-250 hover:bg-neutral-50 text-gray-700"
+                      ? "border-indigo-500 bg-indigo-500/10 text-white shadow-[0_0_15px_rgba(99,102,241,0.1)]" 
+                      : "border-neutral-800 hover:bg-neutral-800/50 text-neutral-400"
                   }`}
                 >
                   <div>
-                    <span className="font-bold block">{con.id.toUpperCase()} Schema</span>
-                    <span className="text-[10px] text-gray-400 font-mono italic">
-                      {con.preconditions.length} pre | {con.postconditions.length} post assertions
+                    <span className="font-bold block">{con.name}</span>
+                    <span className="text-[10px] text-neutral-500 font-mono mt-1 block">
+                      ID: {con.id}
                     </span>
                   </div>
-                  <ChevronRight size={14} className="text-gray-400" />
+                  <ChevronRight size={14} className={isActive ? "text-indigo-400" : "text-neutral-600"} />
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Detailed Contract specifications card - Right Column */}
-        <div className="lg:col-span-8 space-y-4">
+        <div className="lg:col-span-8">
           {selectedContract ? (
-            <div className="border border-gray-200 rounded-2xl p-5 space-y-5">
-              <div className="flex justify-between items-start border-b border-gray-150 pb-3">
+            <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-6 space-y-6">
+              <div className="flex justify-between items-start border-b border-neutral-800 pb-4">
                 <div>
-                  <h3 className="font-bold text-neutral-950 text-sm font-display">
-                    {selectedContract.name || `${selectedContract.id.toUpperCase()} SLA Behavioral Bounds`}
+                  <h3 className="font-bold text-white text-base">
+                    {selectedContract.name}
                   </h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[10px] text-gray-400 font-mono block">
-                      Contract Ref: <strong className="text-gray-600">{selectedContract.id}</strong> (v{selectedContract.version || "1.0"})
+                  <div className="flex items-center gap-3 mt-1.5">
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase ${
+                      selectedContract.risk_tier === 'CRITICAL' ? 'bg-rose-500/10 text-rose-500 border border-rose-500/20' :
+                      selectedContract.risk_tier === 'HIGH' ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' :
+                      'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
+                    }`}>
+                      {selectedContract.risk_tier} RISK
                     </span>
-                    <span className="text-gray-300">•</span>
-                    <span className="text-[10px] text-gray-400 font-mono block">
-                      Risk Assessment level: <strong className={`uppercase ${
-                        selectedContract.risk_tier === "CRITICAL" ? "text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded font-extrabold border border-rose-200" :
-                        selectedContract.risk_tier === "HIGH" ? "text-red-650 bg-red-50 px-1.5 py-0.5 rounded font-bold border border-red-200" :
-                        selectedContract.risk_tier === "MEDIUM" ? "text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded font-semibold border border-amber-200" : 
-                        "text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200"
-                      }`}>{selectedContract.risk_tier || "LOW"} Risk</strong>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500 font-mono">
+                      {selectedContract.shadow_mode ? <Eye size={12} className="text-indigo-400" /> : <EyeOff size={12} />}
+                      SHADOW_MODE: {selectedContract.shadow_mode ? 'ENABLED' : 'DISABLED'}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500 font-mono ml-4">
+                      <ShieldCheck size={12} className={selectedContract.api_key ? "text-emerald-400" : "text-neutral-600"} />
+                      AUTH_STATUS: {selectedContract.api_key ? 'ENFORCED' : 'INSECURE'}
                     </span>
                   </div>
                 </div>
-                <span className="bg-emerald-150 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-mono border border-emerald-250 font-bold uppercase shrink-0">
-                  ACTIVE BOUNDS
-                </span>
+                <span className="text-[10px] text-neutral-500 font-mono">v{selectedContract.version}</span>
               </div>
 
-              {/* Allowed / Blocked Tools Pipelines - System 1 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
-                <div className="space-y-1.5">
-                  <span className="text-[9px] font-bold text-emerald-800 font-mono uppercase tracking-wider block">✓ ALLOWED CAPABILITY TOOLS:</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {selectedContract.allowed_tools && selectedContract.allowed_tools.length > 0 ? (
-                      selectedContract.allowed_tools.map((t, idx) => (
-                        <span key={idx} className="bg-emerald-50 text-emerald-800 border border-emerald-150 px-2 py-0.5 rounded font-mono text-[10px] font-bold">
-                          {t}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400 text-xs italic font-mono">No special tools registered (autonomous limits enforced)</span>
-                    )}
+              {learningSuggestion && (
+                <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-2xl p-4 space-y-2 animate-in fade-in slide-in-from-top-4 duration-500">
+                  <div className="flex items-center gap-2 text-indigo-400">
+                    <Sparkles size={14} />
+                    <span className="text-[10px] font-bold font-mono uppercase tracking-widest">AI Learning Suggestion</span>
                   </div>
+                  <p className="text-[11px] text-neutral-300 leading-relaxed font-sans italic">{learningSuggestion}</p>
                 </div>
+              )}
 
-                <div className="space-y-1.5">
-                  <span className="text-[9px] font-bold text-red-800 font-mono uppercase tracking-wider block">✕ BLOCKED / HARMFUL TOOLS (IMMEDIATE HALT):</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {selectedContract.blocked_tools && selectedContract.blocked_tools.length > 0 ? (
-                      selectedContract.blocked_tools.map((t, idx) => (
-                        <span key={idx} className="bg-red-50 text-red-800 border border-red-150 px-2 py-0.5 rounded font-mono text-[10px] font-bold">
-                          {t}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-gray-400 text-xs italic font-mono">None registered (baseline proxy limits apply)</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Linked capabilities list */}
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-gray-400 font-mono uppercase block">BOUND READ-WRITE PORT MODULES:</span>
-                <div className="flex gap-2 flex-wrap">
-                  {linkedCapabilities.length > 0 ? (
-                    linkedCapabilities.map(cap => (
-                      <span key={cap.id} className="bg-indigo-50 text-indigo-800 border border-indigo-150 px-2.5 py-0.5 rounded-full text-xs font-sans font-semibold">
-                        {cap.name} (SLA v{cap.version})
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold text-neutral-500 font-mono uppercase tracking-widest block">Allowed Tools</span>
+                  <div className="flex flex-wrap gap-2">
+                    {(selectedContract.allowed_tools || []).map(tool => (
+                      <span key={tool} className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-[11px] text-neutral-300 font-mono">
+                        {tool}
                       </span>
-                    ))
-                  ) : (
-                    <span className="text-gray-400 text-xs italic font-mono">No active capabilities bound in this pool.</span>
-                  )}
-                </div>
-              </div>
-
-              {/* pre / post assertions split */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-neutral-50/50 p-3.5 rounded-xl border border-gray-150 space-y-2">
-                  <span className="text-[10px] font-bold text-emerald-800 font-mono uppercase block">✓ PRECONDITIONS:</span>
-                  <ul className="text-xs list-disc pl-4 space-y-1 text-gray-650">
-                    {selectedContract.preconditions.map((pre, i) => (
-                      <li key={i}>{pre}</li>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-
-                <div className="bg-neutral-50/50 p-3.5 rounded-xl border border-gray-150 space-y-2">
-                  <span className="text-[10px] font-bold text-indigo-800 font-mono uppercase block">✓ POSTCONDITIONS ASSERTIONS:</span>
-                  <ul className="text-xs list-disc pl-4 space-y-1 text-gray-650">
-                    {selectedContract.postconditions.map((post, i) => (
-                      <li key={i}>{post}</li>
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold text-rose-500/70 font-mono uppercase tracking-widest block">Blocked Patterns</span>
+                  <div className="flex flex-wrap gap-2">
+                    {(selectedContract.blocked_patterns || []).map(pattern => (
+                      <span key={pattern} className="px-2 py-1 bg-rose-500/5 border border-rose-500/10 rounded text-[11px] text-rose-500 font-mono italic">
+                        {pattern}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
 
-              {/* JSON schema files representation */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <span className="text-[10px] font-bold text-gray-400 font-mono uppercase block">Input Payload Schema Bound:</span>
-                  <pre className="bg-neutral-900 text-gray-100 p-3.5 rounded-xl font-mono text-[10.5px] leading-relaxed overflow-x-auto border border-neutral-800">
-                    {selectedContract.input_schema}
-                  </pre>
-                </div>
-
-                <div className="space-y-1.5">
-                  <span className="text-[10px] font-bold text-gray-400 font-mono uppercase block">Output Payload Schema Bound:</span>
-                  <pre className="bg-neutral-900 text-gray-100 p-3.5 rounded-xl font-mono text-[10.5px] leading-relaxed overflow-x-auto border border-neutral-800">
-                    {selectedContract.output_schema}
-                  </pre>
-                </div>
-              </div>
-
-              {/* State Fallback Action Recovery Strategy */}
-              <div className="bg-amber-50/50 rounded-xl p-4 border border-amber-200/65 flex gap-3">
-                <AlertTriangle size={18} className="text-amber-700 shrink-0 mt-0.5" />
-                <div className="text-xs leading-relaxed text-amber-900 space-y-0.5 font-sans">
-                  <span className="font-bold text-amber-950 block">Assigned Fallback Recovery Program:</span>
-                  <p>{selectedContract.recovery_strategy}</p>
+              <div className="space-y-3">
+                <span className="text-[10px] font-bold text-neutral-500 font-mono uppercase tracking-widest block">Post-Condition Schemas</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-neutral-900 rounded-xl p-4 border border-neutral-800">
+                    <p className="text-[9px] text-neutral-600 font-mono uppercase mb-2">Input Schema</p>
+                    <pre className="text-[11px] text-indigo-300/80 font-mono leading-relaxed">
+                      {JSON.stringify(selectedContract.input_schema, null, 2)}
+                    </pre>
+                  </div>
+                  <div className="bg-neutral-900 rounded-xl p-4 border border-neutral-800">
+                    <p className="text-[9px] text-neutral-600 font-mono uppercase mb-2">Output Schema</p>
+                    <pre className="text-[11px] text-emerald-300/80 font-mono leading-relaxed">
+                      {JSON.stringify(selectedContract.output_schema, null, 2)}
+                    </pre>
+                  </div>
                 </div>
               </div>
 
-              {/* Explanatory Banner for Uncontracted Block Rejection */}
-              <div className="bg-rose-50 border border-rose-200 rounded-xl p-4 text-xs text-rose-950 font-mono space-y-1.5">
-                <div className="flex items-center gap-1.5 font-bold"><ShieldCheck size={14} className="text-rose-700 font-extrabold" /> ZERO-CONTRACT SAFETY POLICE SYSTEM:</div>
-                <p className="text-[11px] leading-relaxed font-sans text-rose-800">
-                  Execution of any agent driver is <strong>STRICTLY FORBIDDEN</strong> if no matching contract policy exists in this registry. Attempting to run uncontracted routines outputs an immediate system block:
-                </p>
-                <div className="bg-neutral-950 text-red-400 p-2.5 rounded-lg border border-neutral-900 text-[10px] mt-1 pr-6 leading-relaxed">
-                  [REJECT PROTOCOL] Execution blocked because target capability 'FTP-Prune-Aux' is uncontracted. PhantomOS blocked dispatch instantly to prevent silent failure loop.
-                </div>
+              <div className="pt-4 border-t border-neutral-800 flex justify-end">
+                <button 
+                  onClick={handleLearn}
+                  disabled={isLearning}
+                  className="flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-indigo-600 border border-neutral-800 hover:border-indigo-500 text-[11px] font-bold text-neutral-400 hover:text-white rounded-xl transition duration-150 disabled:opacity-50"
+                >
+                  <BrainCircuit size={14} />
+                  {isLearning ? "Analyzing Execution History..." : "Learn From Execution"}
+                </button>
               </div>
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-400 font-mono text-xs">
-              Load contract database to inspect.
+            <div className="text-center py-20 border-2 border-dashed border-neutral-900 rounded-3xl">
+              <Layers size={32} className="mx-auto text-neutral-800 mb-4" />
+              <p className="text-xs text-neutral-600 font-mono">No policy selected</p>
             </div>
           )}
         </div>

@@ -1,0 +1,26 @@
+name: production-agent
+version: 1.0.0
+risk_level: high
+api_key: "dev-key-12345"
+
+allowed_tools:
+  - read_file
+  - github_create_pr
+  - database_select
+  - search_web
+
+blocked_patterns:
+  - rm\s+-rf
+  - DROP\s+TABLE
+  - chmod\s+777
+  - curl\s+.*\s+\|\s+bash
+  - sudo\s+.*
+
+circuit_breaker:
+  max_failures: 3
+  threshold_consecutive: 3
+
+shadow_mode: true
+
+endpoint: http://localhost:3000/api/audit
+signature: base64-simulated-signature-v2

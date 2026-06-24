@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "capability": {
+      "title": "Capability",
+      "description": "Registered runtime capabilities with versioning",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string", "enum": ["ACTIVE", "DEGRADED", "QUARANTINED", "ARCHIVED"] },
+        "agent_type": { "type": "string" },
+        "contract_id": { "type": "string" },
+        "version": { "type": "number" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "status"]
+    },
+    "contract": {
+      "title": "Contract",
+      "description": "Behavioral boundary contracts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "risk_tier": { "type": "string" }
+      }
+    },
+    "trace": {
+      "title": "Trace",
+      "description": "Immutable verification traces",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "capability_id": { "type": "string" },
+        "outcome": { "type": "string" }
+      }
+    },
+    "event": {
+      "title": "Event",
+      "description": "Append-only execution event log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "session_id": { "type": "string" },
+        "event_type": { "type": "string" }
+      }
+    },
+    "session": {
+      "title": "Session",
+      "description": "Multi-agent session memory",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "agent": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "capabilities": {
+      "schema": "capability",
+      "description": "Collection of capability records"
+    },
+    "contracts": {
+      "schema": "contract",
+      "description": "Collection of governing contracts"
+    },
+    "traces": {
+      "schema": "trace",
+      "description": "Execution proof log"
+    },
+    "events": {
+      "schema": "event",
+      "description": "Real-time event stream"
+    },
+    "sessions": {
+      "schema": "session",
+      "description": "Global session memory"
+    }
+  }
+}

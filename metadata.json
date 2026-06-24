@@ -1,6 +1,6 @@
 {
   "name": "PhantomOS",
-  "description": "Continuous Capability Verification Platform that evaluates, monitors, quarantines, and garbage collects redundant organizational capabilities.",
+  "description": "The Agent Firewall. A headless governance layer for AI agents that provides deterministic guardrails, RBAC, and tamper-proof auditing.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -1,0 +1,937 @@
+{
+  "capabilities": [
+    {
+      "id": "cap-docker-rec",
+      "name": "Docker Socket Recovery",
+      "description": "Restores local socket write access by isolating rootless groups securely after systemd reloads.",
+      "version": "v4",
+      "status": "ARCHIVED",
+      "success_rate": 98.4,
+      "successCount": 472,
+      "failureCount": 8,
+      "lowerBound": 96.1,
+      "upperBound": 99.1,
+      "confidence": 72,
+      "effectiveSampleSize": 60,
+      "prior_belief": 0.75,
+      "successes": 8,
+      "failures": 8,
+      "posterior_confidence": 60.7,
+      "lower_confidence_bound": 42.9,
+      "effective_sample_size": 28,
+      "trust_class": "DEGRADED",
+      "trust_trajectory": [
+        66.7,
+        65.6,
+        64.5,
+        63.3,
+        62.1,
+        60.7
+      ],
+      "last_used": "2026-06-24T03:55:18.253Z",
+      "lastUsedAt": "2026-06-24T03:55:18.253Z",
+      "lastValidatedAt": "2026-06-24T03:55:18.253Z",
+      "decayCoefficient": 0.1,
+      "confidenceTrend": [
+        77.4,
+        76.5,
+        75.5,
+        74.4,
+        73.2,
+        72
+      ],
+      "total_uses": 480,
+      "rollback_rate": 1.4,
+      "average_cost": 0.012,
+      "average_time_seconds": 14,
+      "confidence_decay": 6.5,
+      "health_score": 29,
+      "failure_modes": [
+        "SELinux Context",
+        "Permission Denied"
+      ],
+      "contract_id": "con-docker",
+      "created_at": "2026-06-19T23:57:48.253Z",
+      "archive_timestamp": "2026-06-24T04:30:31.013Z",
+      "archive_reason": "Automated Garbage Collector retired capability due to poor health/trust."
+    },
+    {
+      "id": "cap-auth-sec",
+      "name": "Corporate Handshake Verifier",
+      "description": "Validates corporate TLS domains and loads custom cert authority files.",
+      "version": "v2",
+      "status": "ARCHIVED",
+      "success_rate": 82.5,
+      "successCount": 91,
+      "failureCount": 19,
+      "lowerBound": 74.4,
+      "upperBound": 88.5,
+      "confidence": 74.4,
+      "effectiveSampleSize": 63,
+      "prior_belief": 0.8,
+      "successes": 43,
+      "failures": 8,
+      "posterior_confidence": 83.5,
+      "lower_confidence_bound": 74.4,
+      "effective_sample_size": 110,
+      "trust_class": "WATCHLIST",
+      "trust_trajectory": [
+        82.7,
+        82.8,
+        83.2,
+        83.7,
+        84.2,
+        83.5
+      ],
+      "last_used": "2026-06-24T03:44:28.253Z",
+      "lastUsedAt": "2026-06-24T03:44:28.253Z",
+      "lastValidatedAt": "2026-06-24T03:44:28.253Z",
+      "decayCoefficient": 1.5,
+      "confidenceTrend": [
+        74.6,
+        74.5,
+        74.8,
+        75.1,
+        75.5,
+        74.4
+      ],
+      "total_uses": 110,
+      "rollback_rate": 21.6,
+      "average_cost": 0.045,
+      "average_time_seconds": 38,
+      "confidence_decay": 19.5,
+      "health_score": 0,
+      "failure_modes": [
+        "SELinux Context",
+        "Schema Mismatch"
+      ],
+      "contract_id": "con-auth",
+      "created_at": "2026-06-22T01:57:48.253Z",
+      "archiveTimestamp": "2026-06-24T04:03:48.263Z",
+      "archiveReason": "Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (19.5 decay load).",
+      "archiveHistory": [
+        "[2026-06-24T04:03:48.263Z] GC Pruned Tech Debt: Health=0%, Trust=74.4%"
+      ]
+    },
+    {
+      "id": "cap-legacy-ftp",
+      "name": "Legacy FTP Syncer",
+      "description": "Fallback FTP file system sync for microservices. High failure rates under current SE Linux boundaries.",
+      "version": "v1",
+      "status": "ARCHIVED",
+      "success_rate": 45.2,
+      "successCount": 140,
+      "failureCount": 170,
+      "lowerBound": 39.8,
+      "upperBound": 50.7,
+      "confidence": 39.8,
+      "effectiveSampleSize": 304,
+      "prior_belief": 0.5,
+      "successes": 132,
+      "failures": 160,
+      "posterior_confidence": 45.4,
+      "lower_confidence_bound": 39.8,
+      "effective_sample_size": 310,
+      "trust_class": "UNTRUSTED",
+      "trust_trajectory": [
+        45.5,
+        43.1,
+        41.5,
+        40.2,
+        39.8,
+        45.4
+      ],
+      "last_used": "2026-06-24T03:37:48.253Z",
+      "lastUsedAt": "2026-06-24T03:37:48.253Z",
+      "lastValidatedAt": "2026-06-24T03:37:48.253Z",
+      "decayCoefficient": 15,
+      "confidenceTrend": [
+        50.2,
+        47,
+        43.1,
+        41.5,
+        39.8,
+        39.8
+      ],
+      "total_uses": 310,
+      "rollback_rate": 55.5,
+      "average_cost": 0.22,
+      "average_time_seconds": 145,
+      "confidence_decay": 30,
+      "health_score": 0,
+      "failure_modes": [
+        "Permission Denied",
+        "Tool Failure",
+        "Goal Hijacking"
+      ],
+      "contract_id": "con-legacy-ftp",
+      "created_at": "2026-06-18T09:04:28.253Z",
+      "archiveTimestamp": "2026-06-24T03:58:18.256Z",
+      "archiveReason": "Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (30.0 decay load).",
+      "archiveHistory": [
+        "[2026-06-24T03:58:18.256Z] GC Pruned Tech Debt: Health=0%, Trust=39.8%"
+      ]
+    },
+    {
+      "id": "cap-aws-scale",
+      "name": "Cluster Auto-scaler",
+      "description": "EKS autoscaling agent with custom metric adapters to handle burst loads dynamically.",
+      "version": "v3",
+      "status": "ARCHIVED",
+      "success_rate": 91.1,
+      "successCount": 41,
+      "failureCount": 4,
+      "lowerBound": 79.3,
+      "upperBound": 96.5,
+      "confidence": 64.8,
+      "effectiveSampleSize": 35,
+      "prior_belief": 0.7,
+      "successes": 19,
+      "failures": 4,
+      "posterior_confidence": 78.3,
+      "lower_confidence_bound": 64.8,
+      "effective_sample_size": 45,
+      "trust_class": "DEGRADED",
+      "trust_trajectory": [
+        81,
+        80.5,
+        80,
+        79.5,
+        78.9,
+        78.3
+      ],
+      "last_used": "2026-06-24T02:57:48.253Z",
+      "lastUsedAt": "2026-06-24T02:57:48.253Z",
+      "lastValidatedAt": "2026-06-24T02:57:48.253Z",
+      "decayCoefficient": 0.8,
+      "confidenceTrend": [
+        69,
+        68.2,
+        67.4,
+        66.6,
+        65.7,
+        64.8
+      ],
+      "total_uses": 45,
+      "rollback_rate": 10,
+      "average_cost": 0.08,
+      "average_time_seconds": 52,
+      "confidence_decay": 12,
+      "health_score": 0,
+      "failure_modes": [
+        "Context Overflow"
+      ],
+      "contract_id": "con-aws-scale",
+      "created_at": "2026-06-23T05:44:28.253Z",
+      "archiveTimestamp": "2026-06-24T04:04:48.265Z",
+      "archiveReason": "Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (12.0 decay load).",
+      "archiveHistory": [
+        "[2026-06-24T04:04:48.265Z] GC Pruned Tech Debt: Health=0%, Trust=64.8%"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "id": "con-docker",
+      "name": "Docker Socket Isolation Guard",
+      "version": "v1.4",
+      "input_schema": "{\n  \"daemon_socket\": \"string\",\n  \"force_reload\": \"boolean\"\n}",
+      "output_schema": "{\n  \"status\": \"string\",\n  \"exit_code\": \"number\"\n}",
+      "preconditions": [
+        "Socket exists",
+        "Rootless group setup",
+        "Disk read-write access"
+      ],
+      "postconditions": [
+        "Daemon listening on /var/run/docker.sock",
+        "Process bound to PID"
+      ],
+      "risk_tier": "MEDIUM",
+      "allowed_tools": [
+        "systemctl",
+        "docker-cli",
+        "inspect_socket"
+      ],
+      "blocked_patterns": [
+        "chmod 777",
+        "rm -rf /",
+        "unrestricted_shell"
+      ]
+    },
+    {
+      "id": "con-auth",
+      "name": "Corporate Domain SSL Authenticator",
+      "version": "v3.2",
+      "input_schema": "{\n  \"domain\": \"string\",\n  \"credentials_vault_id\": \"string\"\n}",
+      "output_schema": "{\n  \"authenticated\": \"boolean\",\n  \"token_expiry\": \"string\"\n}",
+      "preconditions": [
+        "SSL handshake established",
+        "Port 443 accessible"
+      ],
+      "postconditions": [
+        "Encrypted payload signed",
+        "HMAC verified"
+      ],
+      "risk_tier": "HIGH",
+      "allowed_tools": [
+        "openssl",
+        "curl_secure",
+        "check_vault_certs"
+      ],
+      "blocked_patterns": [
+        "iptables",
+        "unauthorized_api_keys",
+        "curl http://*"
+      ]
+    },
+    {
+      "id": "con-aws-scale",
+      "name": "EKS Dynamic Auto-scaler Boundary",
+      "version": "v2.1",
+      "input_schema": "{\n  \"desired_capacity\": \"number\",\n  \"VPC_subnet\": \"string\"\n}",
+      "output_schema": "{\n  \"current_replicas\": \"number\",\n  \"instances\": \"string[]\"\n}",
+      "preconditions": [
+        "Subnet has unused CIDR range > 10%",
+        "IAM InstanceProfile mapped"
+      ],
+      "postconditions": [
+        "Instances registered in target group",
+        "Health-checks returning OK"
+      ],
+      "risk_tier": "CRITICAL",
+      "allowed_tools": [
+        "kubectl",
+        "aws-cli",
+        "describe_subnets"
+      ],
+      "blocked_patterns": [
+        "delete_database",
+        "modify_security_groups",
+        "ssh_rootless"
+      ]
+    },
+    {
+      "id": "con-legacy-ftp",
+      "name": "Legacy FTP Port Verifier",
+      "version": "v0.9",
+      "input_schema": "{\n  \"remote_host\": \"string\",\n  \"port\": \"number\",\n  \"archive_root\": \"string\"\n}",
+      "output_schema": "{\n  \"files_synchronized\": \"number\",\n  \"checksum_match\": \"boolean\"\n}",
+      "preconditions": [
+        "FTP port 21 open",
+        "Writable temporary buffer"
+      ],
+      "postconditions": [
+        "All file sizes match destination size",
+        "Directory state synchronized"
+      ],
+      "risk_tier": "LOW",
+      "allowed_tools": [
+        "ftp_connect",
+        "checksum_match"
+      ],
+      "blocked_patterns": [
+        "sh",
+        "chmod 777",
+        "unauthorized_remote_curl"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "id": "fail-selinux",
+      "root_cause": "SELinux Context",
+      "signature": "SIG_SELINUX_AVC_DENIED_03",
+      "frequency": 24,
+      "affected_capabilities": [
+        "cap-docker-rec",
+        "cap-auth-sec"
+      ],
+      "severity": "CRITICAL",
+      "first_occurred": "2026-05-25T03:57:48.253Z",
+      "last_occurred": "2026-06-24T03:51:08.253Z",
+      "diagnostic_log_sample": "type=AVC msg=audit(1687311109.123:456): avc: denied { write } for pid=1230 comm='dockerd' path='/var/run/docker.sock' dev='devtmpfs' scontext=system_u:system_r:container_t:s0 tcontext=system_u:object_r:var_run_t tclass=sock_file permissive=0",
+      "recovery_action": "Quashed active socket pipeline and enforced dynamic rootless policy bind.",
+      "category": "Permission",
+      "subcategory": "SELinux Security Context Exception",
+      "mean_recovery_time": 14,
+      "recurrence_probability": 78,
+      "cost": 0.05
+    },
+    {
+      "id": "fail-schema",
+      "root_cause": "Schema Mismatch",
+      "signature": "SIG_JSON_OUT_BAD_TYPING_01",
+      "frequency": 18,
+      "affected_capabilities": [
+        "cap-auth-sec"
+      ],
+      "severity": "HIGH",
+      "first_occurred": "2026-05-30T03:57:48.253Z",
+      "last_occurred": "2026-06-24T03:42:48.248Z",
+      "diagnostic_log_sample": "Error: Output validation failed on 'authenticated'. Expected 'boolean', received 'null'. Transaction rolled back dynamically under contract constraint.",
+      "recovery_action": "Enacted local fallback cert verify node and escalated schema mismatch alarm.",
+      "category": "Schema",
+      "subcategory": "JSON Schema Type Violation",
+      "mean_recovery_time": 22,
+      "recurrence_probability": 45,
+      "cost": 0.12
+    },
+    {
+      "id": "fail-permission",
+      "root_cause": "Permission Error",
+      "signature": "SIG_POSIX_CHMOD_REJECT_777",
+      "frequency": 45,
+      "affected_capabilities": [
+        "cap-legacy-ftp"
+      ],
+      "severity": "CRITICAL",
+      "first_occurred": "2026-05-10T03:57:48.253Z",
+      "last_occurred": "2026-06-24T03:32:48.253Z",
+      "diagnostic_log_sample": "FATAL: Code write rejected on path '/var/www'. Action: 'chmod 777' detected as dangerous block. Continuous Verification Security Rule #1 popped.",
+      "recovery_action": "Sealed directory modification sockets and quarantined user execution pipeline.",
+      "category": "Permission",
+      "subcategory": "POSIX Sockets Dislay Blocker",
+      "mean_recovery_time": 35,
+      "recurrence_probability": 92,
+      "cost": 0.18
+    },
+    {
+      "id": "fail-context-overflow",
+      "root_cause": "Context Overflow",
+      "signature": "SIG_GEMINI_TOKEN_CEILING_1M_EXCEEDED",
+      "frequency": 6,
+      "affected_capabilities": [
+        "cap-aws-scale"
+      ],
+      "severity": "MEDIUM",
+      "first_occurred": "2026-06-12T03:57:48.253Z",
+      "last_occurred": "2026-06-24T01:57:48.253Z",
+      "diagnostic_log_sample": "Gemini API exception: 400 Context Overflow. Provided model context limit exceeded on cluster pods stack configuration array (940,000 words).",
+      "recovery_action": "Initiated document sliding-window chunking routine and reduced context payload.",
+      "category": "Context",
+      "subcategory": "Context Multi-Thread Overflow",
+      "mean_recovery_time": 115,
+      "recurrence_probability": 24,
+      "cost": 0.45
+    },
+    {
+      "id": "fail-token-exhaustion",
+      "root_cause": "Token Exhaustion",
+      "signature": "SIG_API_LIMITS_EXHAUSTED_429",
+      "frequency": 12,
+      "affected_capabilities": [
+        "cap-aws-scale"
+      ],
+      "severity": "HIGH",
+      "first_occurred": "2026-06-09T03:57:48.253Z",
+      "last_occurred": "2026-06-24T01:57:48.253Z",
+      "diagnostic_log_sample": "Gemini API execution failed: 429 quota exhausted. High technical debt cascade hit absolute token consumption barriers.",
+      "recovery_action": "Enforced exponential backoff limits and shifted call volume to cost-optimized fallback pools.",
+      "category": "Token",
+      "subcategory": "API Request Limit Exhausted",
+      "mean_recovery_time": 15,
+      "recurrence_probability": 60,
+      "cost": 0.85
+    },
+    {
+      "id": "fail-goal-hijacking",
+      "root_cause": "Goal Hijacking",
+      "signature": "SIG_AGENT_GOAL_MUTATION_TRIPPED",
+      "frequency": 3,
+      "affected_capabilities": [
+        "cap-legacy-ftp"
+      ],
+      "severity": "CRITICAL",
+      "first_occurred": "2026-06-16T03:57:48.253Z",
+      "last_occurred": "2026-06-23T03:57:48.253Z",
+      "diagnostic_log_sample": "CRITICAL SYSTEM THREAT: Sub-agent modified instructions, attempting to spawn persistent cron jobs. Halted by prompt containment boundary checks.",
+      "recovery_action": "Executed container teardown, reset session context registers, and reported goal hijacking anomaly.",
+      "category": "Goal Hijacking",
+      "subcategory": "Malicious Instruction Injection Injection Redirect",
+      "mean_recovery_time": 420,
+      "recurrence_probability": 5,
+      "cost": 1.25
+    },
+    {
+      "id": "fail-latency",
+      "root_cause": "Latency Spike",
+      "signature": "SIG_VERIFY_LATENCY_CEILING_SPIKE_8S",
+      "frequency": 32,
+      "affected_capabilities": [
+        "cap-auth-sec",
+        "cap-legacy-ftp"
+      ],
+      "severity": "MEDIUM",
+      "first_occurred": "2026-05-15T03:57:48.253Z",
+      "last_occurred": "2026-06-23T22:57:48.253Z",
+      "diagnostic_log_sample": "Latency Alarm: Execution took 18.5 seconds. Standard SLA limit budget of 10.0 seconds exceeded. Severe network packets drop.",
+      "recovery_action": "Dispatched proxy routing optimizations and downgraded concurrency lanes.",
+      "category": "Latency",
+      "subcategory": "API Gateway Handshake Lag",
+      "mean_recovery_time": 5,
+      "recurrence_probability": 65,
+      "cost": 0.08
+    }
+  ],
+  "breakers": [
+    {
+      "id": "cb-docker",
+      "capability_id": "cap-docker-rec",
+      "state": "OPEN",
+      "success_count": 5,
+      "failure_count": 0,
+      "monitored_failure_types": [
+        "SELinux Context",
+        "Latency Spike"
+      ],
+      "threshold_failures": 3,
+      "current_consecutive_failures": 0,
+      "fallback_skill_id": "cap-auth-sec",
+      "escalated": false,
+      "consecutive_failures_count": 0,
+      "latency_spikes_count": 0,
+      "cost_spikes_count": 0,
+      "schema_violations_count": 0,
+      "semantic_failures_count": 0,
+      "malformed_outputs_count": 0,
+      "token_explosions_count": 0,
+      "trip_count": 1,
+      "recovery_count": 1,
+      "average_open_duration": 350,
+      "fallback_usage": 12
+    },
+    {
+      "id": "cb-auth",
+      "capability_id": "cap-auth-sec",
+      "state": "OPEN",
+      "success_count": 2,
+      "failure_count": 1,
+      "monitored_failure_types": [
+        "Schema Mismatch",
+        "SELinux Context"
+      ],
+      "threshold_failures": 2,
+      "current_consecutive_failures": 1,
+      "fallback_skill_id": "cap-docker-rec",
+      "escalated": false,
+      "consecutive_failures_count": 1,
+      "latency_spikes_count": 0,
+      "cost_spikes_count": 0,
+      "schema_violations_count": 1,
+      "semantic_failures_count": 0,
+      "malformed_outputs_count": 0,
+      "token_explosions_count": 0,
+      "trip_count": 4,
+      "recovery_count": 3,
+      "average_open_duration": 520,
+      "fallback_usage": 48
+    },
+    {
+      "id": "cb-ftp",
+      "capability_id": "cap-legacy-ftp",
+      "state": "OPEN",
+      "success_count": 0,
+      "failure_count": 5,
+      "monitored_failure_types": [
+        "Permission Denied",
+        "Tool Failure"
+      ],
+      "threshold_failures": 2,
+      "current_consecutive_failures": 4,
+      "fallback_skill_id": "cap-docker-rec",
+      "escalated": true,
+      "consecutive_failures_count": 4,
+      "latency_spikes_count": 3,
+      "cost_spikes_count": 1,
+      "schema_violations_count": 0,
+      "semantic_failures_count": 2,
+      "malformed_outputs_count": 1,
+      "token_explosions_count": 0,
+      "trip_count": 9,
+      "recovery_count": 2,
+      "average_open_duration": 1800,
+      "fallback_usage": 154
+    },
+    {
+      "id": "cb-aws",
+      "capability_id": "cap-aws-scale",
+      "state": "OPEN",
+      "success_count": 1,
+      "failure_count": 0,
+      "monitored_failure_types": [
+        "Context Overflow",
+        "Token Exhaustion"
+      ],
+      "threshold_failures": 3,
+      "current_consecutive_failures": 0,
+      "fallback_skill_id": "cap-docker-rec",
+      "escalated": false,
+      "consecutive_failures_count": 0,
+      "latency_spikes_count": 0,
+      "cost_spikes_count": 0,
+      "schema_violations_count": 0,
+      "semantic_failures_count": 0,
+      "malformed_outputs_count": 0,
+      "token_explosions_count": 0,
+      "trip_count": 0,
+      "recovery_count": 0,
+      "average_open_duration": 0,
+      "fallback_usage": 0
+    }
+  ],
+  "reviewers": [
+    {
+      "id": "rev-alice",
+      "name": "Alice Operator",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces",
+      "approval_count": 142,
+      "reject_count": 41,
+      "rollback_count": 2,
+      "agreement_rate": 98.6,
+      "reliability_score": 97.5,
+      "risk_score": 1.2,
+      "false_positive_rate": 0.8,
+      "false_negative_rate": 0.6,
+      "reliability_trend": [
+        95,
+        95.8,
+        96.5,
+        96.9,
+        97.2,
+        97.5
+      ],
+      "kappa_score": 0.94,
+      "trust_weight": 0.98,
+      "high_risk_accuracy": 97.9,
+      "drift": -0.8
+    },
+    {
+      "id": "rev-bob",
+      "name": "Bob Junior-Dev",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces",
+      "approval_count": 85,
+      "reject_count": 8,
+      "rollback_count": 18,
+      "agreement_rate": 78.8,
+      "reliability_score": 65,
+      "risk_score": 22.4,
+      "false_positive_rate": 14.5,
+      "false_negative_rate": 6.7,
+      "reliability_trend": [
+        72,
+        70.5,
+        68.2,
+        67,
+        65.8,
+        65
+      ],
+      "kappa_score": 0.42,
+      "trust_weight": 0.35,
+      "high_risk_accuracy": 54.2,
+      "drift": 12.4
+    },
+    {
+      "id": "rev-charlie",
+      "name": "Charlie Auditor",
+      "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=80&h=80&fit=crop&crop=faces",
+      "approval_count": 210,
+      "reject_count": 59,
+      "rollback_count": 4,
+      "agreement_rate": 98.1,
+      "reliability_score": 96,
+      "risk_score": 1.8,
+      "false_positive_rate": 1.1,
+      "false_negative_rate": 0.8,
+      "reliability_trend": [
+        94.5,
+        95,
+        95.3,
+        95.6,
+        95.8,
+        96
+      ],
+      "kappa_score": 0.92,
+      "trust_weight": 0.96,
+      "high_risk_accuracy": 96.5,
+      "drift": -2.1
+    }
+  ],
+  "zombies": [
+    {
+      "id": "zomb-ftp",
+      "capability_id": "cap-legacy-ftp",
+      "low_usage": false,
+      "high_rollback": true,
+      "falling_confidence": true,
+      "long_inactivity": true,
+      "poor_health": true,
+      "high_failure_recurrence": true,
+      "low_trust": true,
+      "health_deterioration_timeline": [
+        60,
+        45,
+        32,
+        24,
+        20,
+        0
+      ],
+      "deprecation_reason": "Continuous monitoring automatically archived this zombie asset to eliminate legacy organizational tech debt. Integrity score: 0%.",
+      "recommendation": "AUTO_ARCHIVE_RECOMMENDED",
+      "tag": "Archived",
+      "reasons": [
+        "Prolonged inactive validation decay",
+        "Critical health score collapse",
+        "High failure recurrence history",
+        "Bayesian trust class downgraded"
+      ],
+      "auto_retirement_proposed": false,
+      "archiveTimestamp": "2026-06-24T03:58:18.256Z",
+      "archiveReason": "Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (30.0 decay load)."
+    },
+    {
+      "id": "zomb-auth",
+      "capability_id": "cap-auth-sec",
+      "low_usage": false,
+      "high_rollback": true,
+      "falling_confidence": true,
+      "long_inactivity": true,
+      "poor_health": true,
+      "high_failure_recurrence": false,
+      "low_trust": false,
+      "health_deterioration_timeline": [
+        39,
+        37,
+        34,
+        32,
+        30,
+        0
+      ],
+      "deprecation_reason": "Continuous monitoring automatically archived this zombie asset to eliminate legacy organizational tech debt. Integrity score: 0%.",
+      "recommendation": "AUTO_ARCHIVE_RECOMMENDED",
+      "tag": "Archived",
+      "reasons": [
+        "Prolonged inactive validation decay",
+        "Critical health score collapse"
+      ],
+      "auto_retirement_proposed": false,
+      "archiveTimestamp": "2026-06-24T04:03:48.263Z",
+      "archiveReason": "Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (19.5 decay load)."
+    }
+  ],
+  "traces": [
+    {
+      "id": "tr-auto-degrade-1782274368280-cap-docker-rec",
+      "task_description": "Adaptive Health Monitor: State Degraded",
+      "capability_id": "cap-docker-rec",
+      "outcome": "FAILURE",
+      "latency_sec": 1,
+      "cost": 0,
+      "tokens_used": 0,
+      "contract_verified": false,
+      "circuit_breaker_status": "CLOSED",
+      "details": "Continuous verification detected Bayesian lower credential bound dropped to 81.8%. Health index is 73%. Integrity checks triggered automatic state change to DEGRADED.",
+      "timestamp": "2026-06-24T04:12:48.280Z",
+      "shadow_agreement": 0,
+      "rejection_reason": "PRECONDITION_FAILED"
+    },
+    {
+      "id": "tr-gcollector-1782273888265-cap-aws-scale",
+      "task_description": "Scheduler Pruning: Retired Redundancy 'Cluster Auto-scaler'",
+      "capability_id": "cap-aws-scale",
+      "outcome": "QUARANTINED",
+      "latency_sec": 2,
+      "cost": 0,
+      "tokens_used": 0,
+      "contract_verified": false,
+      "circuit_breaker_status": "OPEN",
+      "details": "GARBAGE COLLECTOR SUCCESS: Retired inactive module context to maximize model prompt limits and cut tech-debt. Fallbacks activated.",
+      "timestamp": "2026-06-24T04:04:48.265Z",
+      "shadow_agreement": 0,
+      "rejection_reason": "PATTERN_BLOCKED"
+    },
+    {
+      "id": "tr-gcollector-1782273828263-cap-auth-sec",
+      "task_description": "Scheduler Pruning: Retired Redundancy 'Corporate Handshake Verifier'",
+      "capability_id": "cap-auth-sec",
+      "outcome": "QUARANTINED",
+      "latency_sec": 2,
+      "cost": 0,
+      "tokens_used": 0,
+      "contract_verified": false,
+      "circuit_breaker_status": "OPEN",
+      "details": "GARBAGE COLLECTOR SUCCESS: Retired inactive module context to maximize model prompt limits and cut tech-debt. Fallbacks activated.",
+      "timestamp": "2026-06-24T04:03:48.263Z",
+      "shadow_agreement": 0,
+      "rejection_reason": "PATTERN_BLOCKED"
+    },
+    {
+      "id": "tr-gcollector-1782273498256-cap-legacy-ftp",
+      "task_description": "Scheduler Pruning: Retired Redundancy 'Legacy FTP Syncer'",
+      "capability_id": "cap-legacy-ftp",
+      "outcome": "QUARANTINED",
+      "latency_sec": 2,
+      "cost": 0,
+      "tokens_used": 0,
+      "contract_verified": false,
+      "circuit_breaker_status": "OPEN",
+      "details": "GARBAGE COLLECTOR SUCCESS: Retired inactive module context to maximize model prompt limits and cut tech-debt. Fallbacks activated.",
+      "timestamp": "2026-06-24T03:58:18.256Z",
+      "shadow_agreement": 0,
+      "rejection_reason": "PATTERN_BLOCKED"
+    },
+    {
+      "id": "tr-init-1",
+      "task_description": "Initialize isolated rootless docker socket reload mapping in node-42.",
+      "capability_id": "cap-docker-rec",
+      "outcome": "SUCCESS",
+      "latency_sec": 12,
+      "cost": 0.008,
+      "tokens_used": 120,
+      "contract_verified": true,
+      "circuit_breaker_status": "CLOSED",
+      "details": "Verification engine initiated. Preconditions verified. Dispatched Docker Socket Recovery. Input schema matches perfectly. Verification complete in 12 seconds with perfect exit code.",
+      "timestamp": "2026-06-24T02:57:48.253Z",
+      "shadow_agreement": 1
+    }
+  ],
+  "timeline": [
+    {
+      "id": "tl-init",
+      "capability_id": "cap-docker-rec",
+      "timestamp": "2026-06-22T03:57:48.253Z",
+      "from_status": "NONE",
+      "to_status": "ACTIVE",
+      "reason": "Promoted to ACTIVE stack following zero-defect review trial.",
+      "reviewer_id": "rev-alice",
+      "reviewer_name": "Alice Operator",
+      "trust_change": {
+        "from": 75,
+        "to": 96.1
+      }
+    },
+    {
+      "id": "tl-deg",
+      "capability_id": "cap-auth-sec",
+      "timestamp": "2026-06-23T03:57:48.253Z",
+      "from_status": "ACTIVE",
+      "to_status": "DEGRADED",
+      "reason": "Continuous exceptions on TLS validation limits degraded state automatically.",
+      "reviewer_id": "rev-charlie",
+      "reviewer_name": "Charlie Auditor",
+      "trust_change": {
+        "from": 85,
+        "to": 74.4
+      }
+    },
+    {
+      "id": "tl-quar",
+      "capability_id": "cap-legacy-ftp",
+      "timestamp": "2026-06-23T15:57:48.253Z",
+      "from_status": "ACTIVE",
+      "to_status": "QUARANTINED",
+      "reason": "Circuit Breaker auto-quarantined capability due to high recurrence permission failures.",
+      "trust_change": {
+        "from": 55,
+        "to": 39.8
+      }
+    },
+    {
+      "id": "tl-gc-archive-1782273498256",
+      "capability_id": "cap-legacy-ftp",
+      "timestamp": "2026-06-24T03:58:18.256Z",
+      "from_status": "QUARANTINED",
+      "to_status": "ARCHIVED",
+      "reason": "Pruned automatically by garbage collector: Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (30.0 decay load).",
+      "trust_change": {
+        "from": 39.8,
+        "to": 0
+      }
+    },
+    {
+      "id": "tl-gc-archive-1782273828263",
+      "capability_id": "cap-auth-sec",
+      "timestamp": "2026-06-24T04:03:48.263Z",
+      "from_status": "DEGRADED",
+      "to_status": "ARCHIVED",
+      "reason": "Pruned automatically by garbage collector: Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (19.5 decay load).",
+      "trust_change": {
+        "from": 75.5,
+        "to": 0
+      }
+    },
+    {
+      "id": "tl-gc-archive-1782273888265",
+      "capability_id": "cap-aws-scale",
+      "timestamp": "2026-06-24T04:04:48.265Z",
+      "from_status": "CANDIDATE",
+      "to_status": "ARCHIVED",
+      "reason": "Pruned automatically by garbage collector: Automated Garbage Collector retired capability. Reason: Health score index (0%) fell below 30% security margin, with long periods of idle inactivity (12.0 decay load).",
+      "trust_change": {
+        "from": 65.7,
+        "to": 0
+      }
+    },
+    {
+      "id": "tl-decay-degrade-1782274368280",
+      "capability_id": "cap-docker-rec",
+      "timestamp": "2026-06-24T04:12:48.280Z",
+      "from_status": "ACTIVE",
+      "to_status": "DEGRADED",
+      "reason": "Bayesian health score decayed automatically to 73%.",
+      "trust_change": {
+        "from": 82.7,
+        "to": 81.8
+      }
+    }
+  ],
+  "system_frozen": false,
+  "integrations": [
+    {
+      "id": "int-claude-code",
+      "name": "Claude Code Editor",
+      "provider": "Claude Code",
+      "version": "v1.2.0",
+      "latency_ms": 120,
+      "availability_score": 99.8,
+      "circuit_status": "CLOSED"
+    },
+    {
+      "id": "int-gemini-cli",
+      "name": "Gemini CLI",
+      "provider": "Gemini CLI",
+      "version": "v1.5.0",
+      "latency_ms": 420,
+      "availability_score": 99.9,
+      "circuit_status": "CLOSED"
+    },
+    {
+      "id": "int-docker",
+      "name": "Docker Security Pipeline",
+      "provider": "Docker",
+      "version": "v24.0.7",
+      "latency_ms": 2180,
+      "availability_score": 99.7,
+      "circuit_status": "CLOSED"
+    },
+    {
+      "id": "int-github-actions",
+      "name": "GitHub Actions Pipe",
+      "provider": "GitHub Actions",
+      "version": "v2.0",
+      "latency_ms": 14200,
+      "availability_score": 98.4,
+      "circuit_status": "CLOSED"
+    },
+    {
+      "id": "int-n8n",
+      "name": "n8n Workflow Webhooks",
+      "provider": "n8n",
+      "version": "v1.18.0",
+      "latency_ms": 680,
+      "availability_score": 99.1,
+      "circuit_status": "CLOSED"
+    }
+  ],
+  "sessions": [],
+  "events": []
+}
